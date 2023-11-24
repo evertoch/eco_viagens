@@ -1,0 +1,51 @@
+.card-container {
+    width: 99%;
+    padding: 5px;
+    cursor: pointer;
+    font-family: 'Caveat';
+    border-bottom: 3px dashed #f3f2cd;
+  }
+  
+  .card-id {
+    display: inline-block;
+    float: right;
+    margin-right: 10px;
+    margin-top: 5px;
+    background-color: #000644;
+    border-radius: 5px;
+    color: #000644;
+    font-weight: 700;
+    padding: 3px;
+    font-family: monospace;
+  }
+
+  .card-container:hover > .card-id{
+    background-color: #ffffff;
+    color: #ffffff;
+  }
+  
+  .card-title {
+    display: inline;
+    font-family: 'Ephesis';
+    font-weight: 600;
+    font-size: 35px;
+  }
+  
+  .card-cost {
+    margin-top: 15px;
+    text-align: end;
+    font-size: 20px;
+  }
+  
+  .card-container:hover {
+    background-color: #ffffff;
+    color: #000644;
+    border: 2px solid #000644;
+    border-radius: 5px;
+  }
+
+  .card-airline{
+    font-size: 25px
+  }
+
+  
