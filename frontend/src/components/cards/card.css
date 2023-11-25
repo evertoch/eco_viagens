@@ -3,7 +3,7 @@
     padding: 5px;
     cursor: pointer;
     font-family: 'Caveat';
-    border-bottom: 3px dashed #ffffff;
+    border-bottom: 3px dashed rgba(255, 255, 255, 0.449);
     
   }
   
