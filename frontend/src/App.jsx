@@ -3,6 +3,25 @@ import "./App.css";
 import Axios from "axios";
 import Card from "./components/cards/card";
 
+const airlinep = ["Azul Linhas Aéreas Brasileiras",
+                  "Avianca",
+                  "Gol Linhas Aéres Inteligentes S.A",
+                  "LATAM Airlines",
+                  "Outras"];
+
+const aiport = ["Aeroporto de Chapecó (XAP)",
+                "Aeroporto Internacional de São Paulo - Congonhas (CGH)",
+                "Aeroporto Internacional de Foz do Iguaçu (IGU)",
+                "Aeroporto Internacional de São Paulo - Guarulhos (GRU)",
+                "Aeroporto Internacional de Viracopos - Campinas (VCP)",
+                "Aeroporto Internacional de Florianópolis (FLN)",
+                "Aeroporto Internacional de Curitiba (CWB)",
+                "Aeroporto Internacional do Rio de Janeiro - Galeão (GIG)",
+                "Aeroporto do Rio de Janeiro - Santos Dumont (SDU)",
+                "Aeroporto Internacional de Curitiba (CWB)",
+                "Aeroporto Internacional de Manaus (MAO)",
+              ];
+
 export default function App() {
   const [values, setValues] = useState();
   const [listCard, setListCard] = useState([]);
@@ -14,7 +33,7 @@ export default function App() {
       airline: values.airline,
       airportd: values.airportd,
       airporta: values.airporta,
-      date: values.date,      
+      date: values.date,
     }).then(() => {
       Axios.post("http://localhost:3001/search", {
         name: values.name,
@@ -58,6 +77,7 @@ export default function App() {
       <div className="register-container">
         <h1 className="register-title">Cadastrar Voos</h1>
 
+{/* Nome do Passageiro*/}
         <input
           type="text"
           name="name"
@@ -65,37 +85,62 @@ export default function App() {
           className="register-input"
           onChange={handleaddValues}
         />
-        <input
-          type="text"
-          placeholder="Companhia Aérea"
+{/* Companhia Aérea*/}        
+        <select
           name="airline"
           className="register-input"
           onChange={handleaddValues}
-        />
-        <input
-          type="text"
-          placeholder="Aeroporto de Origem"
-          name="airportd"
-          className="register-input"
-          onChange={handleaddValues}
-        />
-        <input
-          type="text"
-          placeholder="Aeroporto de Destino"
-          name="airporta"
-          className="register-input"
-          onChange={handleaddValues}
-        />
+        >
+          <option value="" disabled selected hidden>Companhia Aérea</option>
+          {airlinep.map((airline, index) => (
+            <option key={index} value={airline}>
+              {airline}
+            </option>
+          ))}
+        </select>
+        
+{/* Aeroporto de Origem*/}        
+        {/* Aeroporto de Origem*/}
+      <select
+        name="airportd"
+        className="register-input"
+        onChange={handleaddValues}
+      >
+        <option value="" disabled selected hidden>Escolha o Aeroporto de Origem</option>
+        {aiport.map((airport, index) => (
+          <option key={index} value={airport}>
+            {airport}
+          </option>
+        ))}
+      </select>
+
+{/* Aeroporto de Destino*/}
+  <select
+    name="airporta"
+    className="register-input"
+    onChange={handleaddValues}
+  >
+    <option value="" disabled selected hidden>Escolha o Aeroporto de Destino</option>
+    {aiport.map((airport, index) => (
+      <option key={index} value={airport}>
+        {airport}
+      </option>
+    ))}
+  </select>
+
+{/* Preço da Passagem*/}        
         <input
           type="number"
           step="0.01"
           min="1"
           max="10000"
-          placeholder="Preço"
+          placeholder="Preço R$"
           name="cost"
           className="register-input"
           onChange={handleaddValues}
         />
+
+{/* Data do Voo*/}        
         <input
           type="date"
           step="0.01"
@@ -128,7 +173,7 @@ export default function App() {
             date={val.date}
           />
         ))}
-    </div>
+      </div>
     </div >
   );
 }

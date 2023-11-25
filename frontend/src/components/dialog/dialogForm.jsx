@@ -33,10 +33,10 @@ export default function FormDialog(props) {
     Axios.put("http://localhost:3001/edit", {
       id: editValues.id,
       name: editValues.name,
-      cost: editValues.cost,
       airline: editValues.airline,
       airportd: editValues.airportd,
       airporta: editValues.airporta,
+      cost: editValues.cost,
       date: editValues.date,
     }).then(() => {
       props.setListCard(
@@ -111,8 +111,8 @@ export default function FormDialog(props) {
           <TextField
             autoFocus
             margin="dense"
-            id="aiportd"
-            label="Aeroporto de Partida"
+            id="airportd"
+            label="Origem"
             defaultValue={props.airportd}
             type="text"
             onChange={handleChangeValues}
@@ -121,13 +121,13 @@ export default function FormDialog(props) {
           <TextField
             autoFocus
             margin="dense"
-            id="aiporta"
-            label="Aeroporto de Chegada"
+            id="airporta"
+            label="Destino"
             defaultValue={props.airporta}
             type="text"
             onChange={handleChangeValues}
             fullWidth
-          />                    
+          />             
           <TextField
             autoFocus
             margin="dense"
