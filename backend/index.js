@@ -17,9 +17,12 @@ app.post("/register", (req, res) => {
   const { name } = req.body;
   const { airline } = req.body;
   const { cost } = req.body;
+  const { airportd } = req.body;
+  const { airporta } = req.body;
+  const { date } = req.body;
 
-  let mysql = "INSERT INTO passengers ( name, airline, cost) VALUES (?, ?, ?)";
-  db.query(mysql, [name, airline, cost], (err, result) => {
+  let mysql = "INSERT INTO flights (name, airline, airportd, airporta, cost, date) VALUES (?, ?, ?, ?, ?, ?)";
+  db.query(mysql, [name, airline, airportd, airporta, cost, date], (err, result) => {
     res.send(result);
   });
 });
@@ -28,17 +31,19 @@ app.post("/search", (req, res) => {
   const { name } = req.body;
   const { airline } = req.body;
   const { cost } = req.body;
-
-  let mysql =
-    "SELECT * from passengers WHERE name = ? AND airline = ? AND cost = ?";
-  db.query(mysql, [name, airline, cost], (err, result) => {
+  const { airportd } = req.body;
+  const { airporta } = req.body;
+  const { date } = req.body;
+  
+  let mysql = "SELECT * from flights WHERE name = ? AND airline = ? AND airportd = ? AND airporta = ? AND cost = ? AND date = ?";
+  db.query(mysql, [name, airline, airportd, airporta, cost, date], (err, result) => {
     if (err) res.send(err);
     res.send(result);
   });
 });
 
 app.get("/getCards", (req, res) => {
-  let mysql = "SELECT * FROM passengers";
+  let mysql = "SELECT * FROM flights";
   db.query(mysql, (err, result) => {
     if (err) {
       console.log(err);
@@ -51,10 +56,13 @@ app.get("/getCards", (req, res) => {
 app.put("/edit", (req, res) => {
   const { id } = req.body;
   const { name } = req.body;
-  const { airline } = req.body;
   const { cost } = req.body;
-  let mysql = "UPDATE passengers SET name = ?, airline = ?, cost = ? WHERE id = ?";
-  db.query(mysql, [name, airline, cost, id], (err, result) => {
+  const { airline } = req.body;
+  const { airportd } = req.body;
+  const { airporta } = req.body;
+  const { date } = req.body;
+  let mysql = "UPDATE flights SET name = ?, airline = ?, airportd = ?, airporta = ?, cost = ?, date =? WHERE id = ?";
+  db.query(mysql, [name, airline, airportd, airporta, cost, date, id], (err, result) => {
     if (err) {
       res.send(err);
     } else {
@@ -65,7 +73,7 @@ app.put("/edit", (req, res) => {
 
 app.delete("/delete/:id", (req, res) => {
   const { id } = req.params;
-  let mysql = "DELETE FROM passengers WHERE id = ?";
+  let mysql = "DELETE FROM flights WHERE id = ?";
   db.query(mysql, id, (err, result) => {
     if (err) {
       console.log(err);

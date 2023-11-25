@@ -13,6 +13,9 @@ export default function FormDialog(props) {
     name: props.title,
     cost: props.cost,
     airline: props.airline,
+    airportd: props.airportd,
+    airporta: props.airporta,
+    date: props.date,
   });
 
   const handleChangeValues = (values) => {
@@ -32,6 +35,9 @@ export default function FormDialog(props) {
       name: editValues.name,
       cost: editValues.cost,
       airline: editValues.airline,
+      airportd: editValues.airportd,
+      airporta: editValues.airporta,
+      date: editValues.date,
     }).then(() => {
       props.setListCard(
         props.listCard.map((value) => {
@@ -41,6 +47,9 @@ export default function FormDialog(props) {
                 name: editValues.name,
                 cost: editValues.cost,
                 airline: editValues.airline,
+                airportd: editValues.airportd,
+                airporta: editValues.airporta,
+                date: editValues.date,
               }
             : value;
         })
@@ -93,7 +102,7 @@ export default function FormDialog(props) {
             autoFocus
             margin="dense"
             id="airline"
-            label="Linha Aérea"
+            label="Companhia Aérea"
             defaultValue={props.airline}
             type="text"
             onChange={handleChangeValues}
@@ -102,10 +111,39 @@ export default function FormDialog(props) {
           <TextField
             autoFocus
             margin="dense"
+            id="aiportd"
+            label="Aeroporto de Partida"
+            defaultValue={props.airportd}
+            type="text"
+            onChange={handleChangeValues}
+            fullWidth
+          />
+          <TextField
+            autoFocus
+            margin="dense"
+            id="aiporta"
+            label="Aeroporto de Chegada"
+            defaultValue={props.airporta}
+            type="text"
+            onChange={handleChangeValues}
+            fullWidth
+          />                    
+          <TextField
+            autoFocus
+            margin="dense"
             id="cost"
             label="preço"
             defaultValue={props.cost}
             type="number"
+            onChange={handleChangeValues}
+            fullWidth
+          />
+          <TextField
+            autoFocus
+            margin="dense"
+            id="date"
+            defaultValue={props.date}
+            type="date"
             onChange={handleChangeValues}
             fullWidth
           />

@@ -12,11 +12,17 @@ export default function App() {
       name: values.name,
       cost: values.cost,
       airline: values.airline,
+      airportd: values.airportd,
+      airporta: values.airporta,
+      date: values.date,      
     }).then(() => {
       Axios.post("http://localhost:3001/search", {
         name: values.name,
         cost: values.cost,
         airline: values.airline,
+        airportd: values.airportd,
+        airporta: values.airporta,
+        date: values.date,
       }).then((response) => {
         setListCard([
           ...listCard,
@@ -25,6 +31,9 @@ export default function App() {
             name: values.name,
             cost: values.cost,
             airline: values.airline,
+            airportd: values.airportd,
+            airporta: values.airporta,
+            date: values.date,
           },
         ]);
       });
@@ -47,7 +56,7 @@ export default function App() {
   return (
     <div className="app-container">
       <div className="register-container">
-        <h1 className="register-title">Cadastrar Passagens</h1>
+        <h1 className="register-title">Cadastrar Voos</h1>
 
         <input
           type="text"
@@ -64,12 +73,36 @@ export default function App() {
           onChange={handleaddValues}
         />
         <input
+          type="text"
+          placeholder="Aeroporto de Origem"
+          name="airportd"
+          className="register-input"
+          onChange={handleaddValues}
+        />
+        <input
+          type="text"
+          placeholder="Aeroporto de Destino"
+          name="airporta"
+          className="register-input"
+          onChange={handleaddValues}
+        />
+        <input
           type="number"
           step="0.01"
           min="1"
           max="10000"
           placeholder="Preço"
           name="cost"
+          className="register-input"
+          onChange={handleaddValues}
+        />
+        <input
+          type="date"
+          step="0.01"
+          min="1"
+          max="10000"
+          placeholder="Data do voo"
+          name="date"
           className="register-input"
           onChange={handleaddValues}
         />
@@ -80,7 +113,7 @@ export default function App() {
       </div>
 
       <div className="menu">
-        <h1 className="menu-title">Lista de Passageiros</h1>
+        <h1 className="menu-title">Lista de Voos</h1>
         {listCard.map((val) => (
           <Card
             listCard={listCard}
@@ -90,6 +123,9 @@ export default function App() {
             name={val.name}
             cost={val.cost}
             airline={val.airline}
+            airportd={val.airportd}
+            airporta={val.airporta}
+            date={val.date}
           />
         ))}
     </div>

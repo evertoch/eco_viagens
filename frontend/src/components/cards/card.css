@@ -3,15 +3,27 @@
     padding: 5px;
     cursor: pointer;
     font-family: 'Caveat';
-    border-bottom: 3px dashed #f3f2cd;
+    border-bottom: 3px dashed #ffffff;
   }
   
-  .card-id {
+  .card-date {
     display: inline-block;
     float: right;
     margin-right: 10px;
     margin-top: 5px;
-    background-color: #000644;
+    border-radius: 5px;
+    color: #ffffff;
+    font-weight: 700;
+    padding: 3px;
+    font-family: monospace;
+  }
+
+  .card-airportd {
+    display: inline-block;
+    float: left;
+    margin-right: 10px;
+    margin-top: 5px;
+    background-color: #ffffff;
     border-radius: 5px;
     color: #000644;
     font-weight: 700;
@@ -19,11 +31,19 @@
     font-family: monospace;
   }
 
-  .card-container:hover > .card-id{
+  .card-airporta {
+    display: inline-block;
+    float: left;
+    margin-right: 10px;
+    margin-top: 5px;
     background-color: #ffffff;
-    color: #ffffff;
+    border-radius: 5px;
+    color: #000644;
+    font-weight: 700;
+    padding: 3px;
+    font-family: monospace;
   }
-  
+
   .card-title {
     display: inline;
     font-family: 'Ephesis';
@@ -37,6 +57,10 @@
     font-size: 20px;
   }
   
+  .card-airline{
+    font-size: 25px
+  }
+
   .card-container:hover {
     background-color: #ffffff;
     color: #000644;
@@ -44,8 +68,20 @@
     border-radius: 5px;
   }
 
-  .card-airline{
-    font-size: 25px
+  .card-container:hover .card-date{
+    background-color: #ffffff;
+    color: #000644;
+    border-radius: 5px;
   }
 
-  
+  .card-container:hover .card-airporta{
+    background-color: #000644;
+    color: #ffffff;
+    border-radius: 5px;
+  }
+
+  .card-container:hover .card-airportd{
+    background-color: #000644;
+    color: #ffffff;
+    border-radius: 5px;
+  }
