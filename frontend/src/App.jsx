@@ -100,7 +100,7 @@ export default function App() {
         </select>
         
 {/* Aeroporto de Origem*/}        
-        {/* Aeroporto de Origem*/}
+        
       <select
         name="airportd"
         className="register-input"
